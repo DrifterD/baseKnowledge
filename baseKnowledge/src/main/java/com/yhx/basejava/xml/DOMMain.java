@@ -29,7 +29,14 @@ import org.xml.sax.SAXException;
 
 /**
  * 〈一句话功能简述〉<br> 
- * 〈功能详细描述〉
+ * 通过dom方式加载xml并处理。主要流程：
+ * DocumentBuilderFactory --->install Builder 
+ *  --->builder.parse(...) --------> 读取xml document文件
+ *
+ *通过Dom方式存储xml
+ * TranformFactory ---> new Transform ----->transform.transform(newDoc)
+ *
+ *
  *
  * @author 17081794
  * @see [相关类/方法]（可选）

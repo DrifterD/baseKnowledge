@@ -29,8 +29,14 @@ import org.dom4j.io.SAXReader;
 
 /**
  * 〈一句话功能简述〉<br>
- * 〈功能详细描述〉
- *
+ * 
+ * dom4j:
+ *  保存xml： DocumentHelper.createDocument() ----->FilWriter,XMLWriter
+ *  加载： JAXReader.parse() ------> document 
+ *  xml字符串转换成document:  DocumentHelper.parseText
+ * 
+ * 
+ * 
  * @author 17081794
  * @see [相关类/方法]（可选）
  * @since [产品/模块版本] （可选）
@@ -83,14 +89,14 @@ public class Dom4JMain {
         }
 
         // // method 2 lets write to a file
-        // XMLWriter writer =null;
-        // try {
-        // writer = new XMLWriter(new FileWriter("output.xml"));
-        // writer.write(doc);
-        // writer.close();
-        // }finally{
-        //
-        // }
+//         XMLWriter writer =null;
+//         try {
+//         writer = new XMLWriter(new FileWriter("output.xml"));
+//         writer.write(doc);
+//         writer.close();
+//         }finally{
+//        
+//         }
     }
     
 

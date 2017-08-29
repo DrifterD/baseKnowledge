@@ -28,6 +28,10 @@ import org.dom4j.DocumentException;
 /**
  * 〈一句话功能简述〉<br> 
  * xml文件转换成java 对象
+ * 
+ * 1.首先对象和xml形成映射关系。通过注解完成映射。主要有xmlRootElement,xmlelement,xmlattribute.....只能再getter或者setter上
+ * 2. JAXContext ----->jaxcontext.createMarshaller|jaxcontext.createUnMarshaller -----> marshaller.marshal()
+ *   
  *
  * @author 17081794
  * @see [相关类/方法]（可选）
