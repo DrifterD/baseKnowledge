@@ -13,6 +13,7 @@ package com.yhx.basejava.io;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
@@ -45,50 +46,29 @@ public class DateStreamMain {
     }
 
     private static void creataeDataFile() {
-        DataOutputStream output = null;
-        try {
-            output = new DataOutputStream(new FileOutputStream("binary.data"));
-            output.writeUTF("测试data");
-            output.writeInt(4545);
-            output.writeDouble(109.123);
-            output.flush();
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        } finally {
-
-            if (output != null) {
-                try {
-                    output.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
-        }
+        DataOutputStream output = null;      
+        
+        //new school style. try with reources 
+        // see #TryResourceMain
+        try(DataOutputStream output2 = new DataOutputStream(new FileOutputStream("binary.data"))){           
+            output2.writeUTF("测试data");
+            output2.writeInt(4545);
+            output2.writeDouble(109.123);
+            output2.flush();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }        
+        
     }
 
     /// 读取data文件，必须按照存储顺序读取文件
     private static void readDataFile() {
-        DataInputStream inputStream = null;
-
-        try {
-            inputStream = new DataInputStream(new FileInputStream("binary.data"));
+        
+        try(DataInputStream inputStream  = new DataInputStream(new FileInputStream("binary.data"))){
             System.out.println(String.format("arg[0]=%s,arg[1]=%d,arg[2]=%f", inputStream.readUTF(),
                     inputStream.readInt(), inputStream.readDouble()));
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-
-            if (inputStream != null) {
-
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            }
+        }catch(IOException ex){
+            ex.printStackTrace();
         }
     }
     

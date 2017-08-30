@@ -43,46 +43,33 @@ public class PushbakStream {
     public static void pushbackInputStream() {
 
         String demoStr = "12345678";
-        PushbackInputStream pushbackInputStream = null;
 
-        try {
-            pushbackInputStream = new PushbackInputStream(
-                    new ByteArrayInputStream(demoStr.getBytes(), 0, demoStr.getBytes().length));
-            
-         //   byte[] cache=new byte[128];
-            int length=-1;
-            while((length=pushbackInputStream.read())!=-1){
-                
-                if((char)length=='8'||(char)length=='2'){
-//                    //unread操作，被读取的文件又放回缓存中，这个时候再skip(1),就是跳过当前读取这个字节
-//                    pushbackInputStream.unread(length); 
-//                    pushbackInputStream.skip(1);
-//                    continue;
-                    
-                    //method 2      
-                    //如果不unread，那么字节默认被读出，如果再skip(1);那就是跳了两个
+        try (PushbackInputStream pushbackInputStream = new PushbackInputStream(
+                new ByteArrayInputStream(demoStr.getBytes(), 0, demoStr.getBytes().length))) {
+
+            // byte[] cache=new byte[128];
+            int length = -1;
+            while ((length = pushbackInputStream.read()) != -1) {
+
+                if ((char) length == '8' || (char) length == '2') {
+                    // //unread操作，被读取的文件又放回缓存中，这个时候再skip(1),就是跳过当前读取这个字节
+                    // pushbackInputStream.unread(length);
+                    // pushbackInputStream.skip(1);
+                    // continue;
+
+                    // method 2
+                    // 如果不unread，那么字节默认被读出，如果再skip(1);那就是跳了两个
                     continue;
                 }
-                
-                System.out.println((char)length);                
-            }
-        } catch (Exception excpetion) {
-            excpetion.printStackTrace();
-        } finally {
 
-            if (pushbackInputStream != null) {
-
-                try {
-                    pushbackInputStream.close();
-                } catch (IOException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                System.out.println((char) length);
             }
+        } catch (IOException e) {           
+            e.printStackTrace();
         }
     }
 
-    //pushback 没有outputStream ,只有inputStream
+    // pushback 没有outputStream ,只有inputStream
     public static void pushbackOutputStream() {
 
     }
