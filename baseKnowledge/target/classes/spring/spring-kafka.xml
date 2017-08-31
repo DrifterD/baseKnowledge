@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:property-placeholder location="classpath:conf/main-setting.properties" />
+
+	<bean id="consumerConnectorFactory"
+		class="com.suning.sicrms.kafka.factory.ConsumerConnectorFactory">
+		<property name="kafkaProperties">
+			<props>
+				<prop key="zookeeper.connection.timeout.ms">$[zookeeper.connection.timeout.ms]</prop>
+				<prop key="zookeeper.session.timeout.ms">$[zookeeper.session.timeout.ms]</prop>
+				<prop key="zookeeper.sync.time.ms">$[zookeeper.sync.time.ms]</prop>
+				<prop key="auto.commit.interval.ms">$[auto.commit.interval.ms]</prop>
+				<prop key="auto.offset.reset">$[auto.offset.reset]</prop>
+				<prop key="auto.commit.enable">$[auto.commit.enable]</prop>
+				<prop key="zookeeper.connect">$[zookeeper.connect]</prop>
+				<prop key="group.id">$[group.id]</prop>
+				<prop key="rebalance.max.retries">$[rebalance.max.retries]</prop>
+				<prop key="rebalance.backoff.ms">$[rebalance.backoff.ms]</prop>
+			</props>
+		</property>
+	</bean>
+
+   	<bean id="rxdActivationConsumer" class="com.suning.sicrms.kafka.consumer.RxdActivationConsumer">
+        <property name="consumerConnectorFactory" ref="consumerConnectorFactory" />
+        <property name="topic" value="$[sicrms.rxd.activation.topic]" />
+        <property name="threadNum" value="$[sicrms.rxd.activation.thread.num]" />
+    </bean>
+    
+    
+	<bean id="kafkaConnectorService" class="com.suning.sicrms.kafka.factory.KafkaConnectorServiceImpl">
+		<property name="rxdActivationConsumer" ref="rxdActivationConsumer"/>
+	</bean>
+
+</beans>

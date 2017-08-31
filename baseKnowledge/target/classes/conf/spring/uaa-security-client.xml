@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+      http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<bean id="systemInfoGetter" class="com.suning.framework.uaa.system.UaaSystemInfoGetter">
+		<property name="system" value="$[systemId]" />
+	</bean>
+	
+	<!--  -->
+	<bean id="authorizationService"
+		class="com.suning.framework.uaa.service.AuthorizationClientService">
+		<property name="authorizationRemoteService" ref="authorizationRemoteServiceimpl" />
+		<property name="flag" value="$[author]"/>
+	</bean>
+
+	<bean id="authorizationRemoteServiceimpl" class="org.springframework.remoting.httpinvoker.HttpInvokerProxyFactoryBean">
+       <property name="serviceUrl" value="$[portalUrl]/ump/remoting/remoteService" />
+       <property name="serviceInterface" value="com.suning.framework.uaa.intf.AuthorizationRemoteService" />
+    </bean>
+    
+    <bean id="componentManager" class="com.suning.framework.uaa.util.ComponentManager" />
+
+	<!-- <bean id="userDetailsService" class="com.suning.framework.uaa.user.UaaUserDetailsService" />
+	<bean id="currentUserInfoGetter"
+		class="com.suning.framework.uaa.user.DefaultCurrentUserInfoGetter" /> -->
+
+</beans>

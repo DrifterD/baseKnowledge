@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rsf="http://www.suning.com/schema/rsf"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.suning.com/schema/rsf http://www.suning.com/schema/rsf/rsf.xsd">
+	<!-- <bean id="beanContainerServicesPublisher" class="com.suning.rsf.spring.BeanContainerServicesPublisher"/> -->
+	 <rsf:servicesPublish/>
+	<bean id="customerRSFServiceImpl" class="com.suning.sicrms.rsf.customer.CustomerRSFServiceImpl"/>
+	<bean id="loanInfoRSFServiceImpl" class="com.suning.sicrms.rsf.loaninfo.LoanInfoRSFServiceImpl"/>
+</beans>
