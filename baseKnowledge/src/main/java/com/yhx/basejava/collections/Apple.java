@@ -6,6 +6,10 @@ public class Apple extends Fruit {
 
 	public Integer getCount() {
 		return count;
+
+
+
+
 	}
 
 	public void setCount(Integer count) {
