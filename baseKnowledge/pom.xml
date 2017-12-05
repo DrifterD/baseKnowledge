@@ -7,6 +7,10 @@
 	<name>BaseJava</name>
 	<description>BaseJava</description>
 
+	<properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>dom4j</groupId>
@@ -19,8 +23,15 @@
 			<artifactId>jaxen</artifactId>
 			<version>1.1.4</version>
 		</dependency>
+        <!-- https://mvnrepository.com/artifact/org.jdom/jdom2 -->
+        <dependency>
+            <groupId>org.jdom</groupId>
+            <artifactId>jdom2</artifactId>
+            <version>2.0.6</version>
+        </dependency>
 
 
 	</dependencies>
+
 
 </project>

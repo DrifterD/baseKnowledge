@@ -61,6 +61,6 @@ public class Person {
 		
 		public void work(){
 			System.out.print("use "+this.name+" to work");
-		}		
+		}
 	}
 }
