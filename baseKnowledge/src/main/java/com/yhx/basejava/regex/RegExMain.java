@@ -3,11 +3,19 @@ package com.yhx.basejava.regex;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The type Reg ex main.
+ */
 public class RegExMain {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
-        regeGroup();
+        regGroup2("good ver good ver ver ver");
 
     }
 
@@ -42,6 +50,14 @@ public class RegExMain {
         Matcher matcher = pattern.matcher("122ab11fadeba123af4f11f");
         matcher.find();
         System.out.println(matcher.group(0));
+
+    }
+
+
+    //正则组的重复引用
+    private static void regGroup2(String input){
+        String regex="(good)(.ver).\\1\\2{3}";
+        System.out.println(Pattern.compile(regex).matcher(input).matches());
 
     }
 
