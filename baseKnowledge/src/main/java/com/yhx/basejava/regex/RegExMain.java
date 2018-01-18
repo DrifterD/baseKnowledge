@@ -3,11 +3,19 @@ package com.yhx.basejava.regex;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The type Reg ex main.
+ */
 public class RegExMain {
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
 
-        groupTest();
+        regeGroup();
 
     }
 
@@ -36,10 +44,10 @@ public class RegExMain {
     private static void regeGroup() {
 
         //group 是表达式中() 的组，group(0)全部，下标从1开始
-        String regex = "(?<num>\\d+)ab(?<last>11f)+";
+        String regex = "(\\d+)ab(11f)+";
 
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher("122ab11fadeba123ab11f");
+        Matcher matcher = pattern.matcher("122ab11fadeba123af4f11f");
         matcher.find();
         System.out.println(matcher.group("num"));
         System.out.println(matcher.group("last"));
@@ -55,6 +63,14 @@ public class RegExMain {
         Matcher matcher=pattern.matcher(string);
         System.out.println(matcher.matches());
 
+
+    }
+
+
+    //正则组的重复引用
+    private static void regGroup2(String input){
+        String regex="(good)(.ver).\\1\\2{3}";
+        System.out.println(Pattern.compile(regex).matcher(input).matches());
 
     }
 
