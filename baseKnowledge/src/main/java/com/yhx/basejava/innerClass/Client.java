@@ -9,7 +9,7 @@ public class Client {
 		Super super1=new Sub(222);
 		
 		super1.testMethod();
-		
+		Test test = new Test();
 	}
 
 }
