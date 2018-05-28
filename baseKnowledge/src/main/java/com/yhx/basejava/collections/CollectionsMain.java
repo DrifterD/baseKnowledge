@@ -48,7 +48,7 @@ public class CollectionsMain {
         final List<Integer> list2 = new ArrayList<Integer>() ;
         list2.addAll(list);
         final List<Integer> synchronizedList = Collections.synchronizedList(list);
-        tc.setFinalStr("suning-yhx");
+        tc.setFinalStr("yhx");
         System.out.println(tc.getFinalStr());
 
         for(int i=0;i<10;i++){
