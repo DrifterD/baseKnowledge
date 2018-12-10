@@ -54,7 +54,22 @@ outExpensive::functionName
 1.从有序集合中生成流时保留原有顺序
 2.可以按需操
 3.流只能被消费一次
-4.流必须有中间操作和终端操作
+4.流三要素：
+    1. 数据源
+    2.中间操作链。**中间操作：返回值必须是有Stream属性**
+    3.终端操作。**终端操作是返回值不属于Stream，包括void**
+
+## 流常规使用
+
+### 筛选
+主要是通过Stream类下filter实现筛选，filter参数是Predicate,可以通过Lambda实现
+### 映射
+主要是map和flatMap
+### 查找和匹配
+匹配:anyMatch,allMatch,noneMatch 
+查找:findFirst,findAny.**注意该方法返回是Optional 类**
+### 归约
+### 
 
 
 
