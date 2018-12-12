@@ -68,9 +68,16 @@ outExpensive::functionName
 ### 查找和匹配
 匹配:anyMatch,allMatch,noneMatch 
 查找:findFirst,findAny.**注意该方法返回是Optional 类**
-### 归约
-### 
+### 归纳（类似于sql中聚合）
+Stream类下一个reduce方法，**该方法就是将流中所有元素结合起来返回一个特定类型**
+###  \*数值流 
+流在对数字操作过程中一般都会涉及到从装箱拆箱操作，从而影响性能，为了避免这种情况，提供数值流IntStream,LongStream,DoubleStream.分别是int,long和double的原始类型。**数值流存在各自不同的特色的方法**
+#### 转换成数值流
+这个操作是将引用类型转换成基础类型流。mapToInt,mapToDouble,mapToLong
+#### 转换成对象流
+将原始流转换成对应的对象流，使用Stream的boxed
 
-
+### \*构建流
+Stream不仅可以通过集合转出流，还可以通过多种方式实现构建流。主要还是给予Stream类下方法：of，iterate,generate.还有其他类FIle等都新建接口提供流程的生成
 
 
