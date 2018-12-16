@@ -2,7 +2,12 @@ package com.yhx.base.lambda;
 
 import com.yhx.base.functionalInterface.FunctionalInterfaceMain;
 import com.yhx.base.functionalInterface.ParamInterface;
+import com.yhx.basejava.polyMorphic.StaticDispatch;
+import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -25,12 +30,17 @@ public abstract class Main {
         //paramInterface();
        // functionMethod();
 
-        FunctionTest ft=new FunctionTest();
-        ft.run();
-        ft.compose(null);
-        System.out.println("done");
+//        FunctionTest ft=new FunctionTest();
+//        ft.run();
+//        ft.compose(null);
+//        System.out.println("done");
 
-
+        //Lambda 简单用法
+        firstPredicate(Arrays.asList("1","2","3",""," "),(item)-> StringUtils.isBlank(item));
+        //Lambda 复杂用法
+        Predicate<String> isNull=(item)-> StringUtils.isBlank(item);
+        firstPredicate(Arrays.asList("1","2","3",""," "),isNull.negate().and((item)->item.equals("2")));
+//        firstComsumer(Arrays.asList(1,23,455,23),(item)->System.out.println("item="+item));
     }
 
     //这里以runnable 接口为例
@@ -126,5 +136,33 @@ public abstract class Main {
        //System.out.println("predicate "+predicate.test(10));
         //System.out.println(fc.apply("1234"));
 
+    }
+
+    /**
+     * 尝试使用predicate 函数接口实现lambda
+     */
+    static void firstPredicate(List<String> list,Predicate<String> action){
+
+        List<String> newList=new ArrayList<>();
+         for(String item:list){
+
+            if(action.test(item)){
+                newList.add(item);
+            }
+        }
+
+        System.out.println(newList);
+    }
+
+    /**
+     * 使用 consumer 函数接口
+     * @param integerList
+     * @param action
+     */
+    static void firstComsumer(List<Integer> integerList,Consumer<Integer> action){
+
+        for(Integer item:integerList){
+            action.accept(item);
+        }
     }
 }

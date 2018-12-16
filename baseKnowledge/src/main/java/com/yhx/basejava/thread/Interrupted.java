@@ -1,5 +1,9 @@
 package com.yhx.basejava.thread;
 
+/**
+ * 线程中断理解.线程中断是一个
+ *
+ * **/
 public class Interrupted {
 
 	static class SleepRunner implements Runnable{
@@ -46,10 +50,7 @@ public class Interrupted {
 		sleepThread.interrupt();
 		busyThread.interrupt();
 		System.out.println("SleepThread interrupted is "+sleepThread.isInterrupted());
-		System.out.println("busyThread interrupted is "+busyThread.isInterrupted());
-		busyThread.interrupt();
-		System.out.println("busyThread interrupted again,interrupted="+busyThread.interrupted()+",isInterrupted="+busyThread.isInterrupted());
-				
+		System.out.println("busyThread interrupted is busyThread.isInterrupted(),Thread.isInterrupted:"+Thread.interrupted());
 		try {
 			Thread.sleep(4000);
 		} catch (InterruptedException e) {
