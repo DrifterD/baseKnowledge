@@ -2,9 +2,13 @@ package com.yhx.base.stream;
 
 import com.yhx.base.entity.Dish;
 
-import java.util.Arrays;
-import java.util.List;
+import java.awt.event.ItemEvent;
+import java.util.*;
 import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.counting;
+import static java.util.stream.Collectors.maxBy;
+import static java.util.stream.Collectors.summingInt;
 
 /**
  * 流中收集器
@@ -22,13 +26,46 @@ public class CollectorMain {
                 new Dish("season fruit",true,120, Dish.Type.OTHER),
                 new Dish("pizza",true,550, Dish.Type.MEAT),
                 new Dish("parwns",true,300, Dish.Type.FISH),
-                new Dish("salmon",true,450, Dish.Type.FISH)
+                new Dish("salmon",true,1450, Dish.Type.FISH)
         );
+        maxOrMin(menu);
+        sum(menu);
+        summaryStatistic(menu);
+        joining(menu);
     }
 
+    //对流归约
     public void count(List<Dish> dishLists){
 
-        dishLists.stream().collect(Collectors.counting());
+        dishLists.stream().collect(counting());
+        dishLists.stream().count();
+    }
+
+    public static void maxOrMin(List<Dish> dishList){
+//        Optional<Dish> result= dishList.stream().collect(maxBy(Comparator.comparingInt(Dish::getCalories)));
+        Optional<Dish> result=dishList.stream().collect(maxBy((item1,item2)->Integer.compare(item1.getCalories(),item2.getCalories())));
+        result.ifPresent(System.out::println);
+    }
+
+    public static void sum(List<Dish> dishList){
+        //第一种方法
+//        Integer sum=dishList.stream().collect(summingInt(Dish::getCalories));
+
+        //第二种方法
+        Integer sum=dishList.stream().collect(summingInt(dish->dish.getCalories()));
+        System.out.println("sum="+sum);
+    }
+
+    public static void summaryStatistic(List<Dish> dishList){
+
+        IntSummaryStatistics result= dishList.stream().collect(Collectors.summarizingInt(Dish::getCalories));
+        System.out.println("IntSummaryStatistics="+result);
+    }
+
+    public static void joining(List<Dish> dishList){
+
+        String allName=dishList.stream().map(dish->dish.getName()).collect(Collectors.joining("-"));
+        System.out.println(allName);
 
     }
 }

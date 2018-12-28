@@ -21,4 +21,8 @@ public class Client {
 		
 	}
 
+	public static void firstGeneratic(){
+		List<?> list=new ArrayList<Integer>();
+	}
+
 }
