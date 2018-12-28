@@ -80,4 +80,28 @@ Stream类下一个reduce方法，**该方法就是将流中所有元素结合起
 ### \*构建流
 Stream不仅可以通过集合转出流，还可以通过多种方式实现构建流。主要还是给予Stream类下方法：of，iterate,generate.还有其他类FIle等都新建接口提供流程的生成
 
+## 收集器
+
+### 归约和汇总
+
+### 分组
+
+#### 多级分组
+
+#### 按子组收集数据
+Collectors.groupingBy第二个参数必须是Collector类型，意味着可放除groupingBy以外的任何Collector类型。在遇到收集器返回值Optional时需注意：
+**groupingBy收集器只有在应用分组条件后，第一次在流中找到某个键对应的元素时才会把键加入分组Map中，因为他不会仅仅因为他是归约收集器的返回类型而表达一个最重可能不存在却意外存在的值**（个人理解：在groupingBy中如果不存在对应类型，则也不会有对应optional值，如果存在optional值一定有内容）
+不喜欢Optional结果类型的可以通过**Collectors.collectingAndThen**实现类型转换
+一下是Collectors.collectingAndThen的方法签名
+```
+public static<T,A,R,RR> Collector<T,A,RR> collectingAndThen(Collector<T,A,R> downstream,
+                                                                Function<R,RR> finisher)
+
+```
+
+#### 分区
+Collectors.partitionBy 分区。通过一个boolean类型分区，主要分true和false两个分区。优势在于可以提供两套完整流（true和false）
+
+### 自定义Collector
+
 
