@@ -21,8 +21,7 @@ import java.util.function.Predicate;
  *
  *
  */
-public abstract class Main {
-
+public class Main {
 
     public static void main(String[] args) throws Exception {
         //example2Runnable();
@@ -109,11 +108,12 @@ public abstract class Main {
     }
 
     //jdk 提供 function<paramType,returnType>，predicate,consumer 接口 便於开发使用
-    static void functionMethod() {
-
+    void functionMethod() {
+        int result=0;
         Function<String, Integer> fc = (String num) -> {
             System.out.println("lambda string" + num + " convert int");
-            return Integer.valueOf(num);
+            return result+Integer.valueOf(num);
+//            return Integer.valueOf(num);
         };
 
 //        Predicate<Integer> predicate=(Integer i)->{

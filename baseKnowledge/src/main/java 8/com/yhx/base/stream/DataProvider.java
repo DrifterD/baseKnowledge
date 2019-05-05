@@ -4,8 +4,16 @@ import com.yhx.base.entity.Dish;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public final class DataProvider {
+
+    public static void main(String[] args){
+
+        Integer value=12;
+       Stream<Integer> integerStream = Stream.of(value,13,15,2343);
+       integerStream.forEach(System.out::println);
+    }
 
     public static  List<Dish> getDishList(){
         List<Dish> menu= Arrays.asList(
@@ -21,4 +29,5 @@ public final class DataProvider {
         );
         return menu;
     }
+
 }

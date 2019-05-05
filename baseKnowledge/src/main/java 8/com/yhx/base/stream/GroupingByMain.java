@@ -20,10 +20,10 @@ public class GroupingByMain {
 
     public static void main(String[] args) {
 //        firstGroupingBy();
-//        secondGrouingBy();
+        secondGrouingBy();
 //        thridGroupingBy();
 //        forthGroupingBy();
-        fifthGroupingBy();
+//        fifthGroupingBy();
     }
 
     static void firstGroupingBy() {
