@@ -1,6 +1,6 @@
+
 package weekReference;
 
-import java.lang.ref.PhantomReference;
 import java.lang.ref.WeakReference;
 import java.util.WeakHashMap;
 
