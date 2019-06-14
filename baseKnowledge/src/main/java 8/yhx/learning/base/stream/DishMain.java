@@ -42,8 +42,8 @@ public class DishMain {
 //        firstStream(menu);
 //        distincStream();
 //        firstSkp(menu);
-//        secondFlatMap();
-        reduce(menu);
+        secondFlatMap();
+//        reduce(menu);
     }
 
     /**
@@ -94,8 +94,11 @@ public class DishMain {
     }
 
     /**
-     * allMatch 匹配
-     * @param dishes
+     * @author 17081794
+     * @param null
+     * @return 
+     * @see [相关类/方法]（可选）
+     * @since 0628
      */
     static void firstAllMatch(List<Dish> dishes){
         System.out.println("allMatch="+dishes.stream().allMatch(item->item.getCalories()>1000));
