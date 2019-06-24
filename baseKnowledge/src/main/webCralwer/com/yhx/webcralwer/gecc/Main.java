@@ -1,7 +1,6 @@
-package com.yhx.webcralwer.gecc;
+package com.bigmoon.webcralwer.gecc;
 
 import com.geccocrawler.gecco.GeccoEngine;
-import com.geccocrawler.gecco.annotation.*;
 import com.geccocrawler.gecco.spider.HtmlBean;
 
 @Gecco(matchUrl="https://github.com/{user}/{project}", pipelines="consolePipeline")
