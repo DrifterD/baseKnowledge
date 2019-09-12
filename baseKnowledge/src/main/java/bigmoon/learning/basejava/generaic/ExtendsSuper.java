@@ -20,7 +20,7 @@ import java.util.List;
  * super 子类是xxx的类型，在集合中只支持添加（set)且是XXX本身或者子类类型，不能get，因为不能确定具体集合类型
  *
  * 遵循PECS(producer extends, consumer super)规则
- * @author 17081794
+ * @author bigmoon
  * @see [相关类/方法]（可选）
  * @since 0628
  */

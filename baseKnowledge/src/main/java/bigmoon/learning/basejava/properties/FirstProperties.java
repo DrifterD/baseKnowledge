@@ -16,7 +16,7 @@ import java.util.Properties;
  * 〈一句话功能简述〉<br>
  * 〈功能详细描述〉
  *
- * @author 17081794
+ * @author bigmoon
  * @see [相关类/方法]（可选）
  * @since 0628
  */

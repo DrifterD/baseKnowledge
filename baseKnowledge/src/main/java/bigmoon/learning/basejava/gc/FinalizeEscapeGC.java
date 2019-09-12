@@ -14,7 +14,7 @@ package bigmoon.learning.basejava.gc;
  * 〈一句话功能简述〉<br>
  * 测试 对象可以在垃圾回收时实现“自救”测试,为了更加深入学习jvm GC机制
  * 任何对象的finalize只会被系统(应该是指向jvm)自动调用一次！！！
- * @author 17081794
+ * @author bigmoon
  * @see [相关类/方法]（可选）
  * @since 0905
  */
