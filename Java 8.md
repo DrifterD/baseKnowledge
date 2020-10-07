@@ -4,6 +4,7 @@
 基于熟悉Lambda语法基础上，熟练掌握java.util.function下所有函数式接口，在后面的Stream中就更加容易理解和合理使用
 ### Lambda 语法
 Lambda 表达式可以理解为#**简洁**的可以**传递**的**匿名函数**一个方式：没有名称，但是有参数列表，函数主体，返回类型，还可以有一个可以**抛异常**的异常列表
+Lambda表达式不可以直接抛送检测异常（check exception）；要不定义接口时声明异常；或者try-catch捕获异常
 Lambda语法：
 无参Lambda
 ```

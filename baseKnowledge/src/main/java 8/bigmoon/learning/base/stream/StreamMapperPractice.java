@@ -14,6 +14,7 @@ package bigmoon.learning.base.stream;
 import com.google.common.collect.Lists;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -24,8 +25,9 @@ import static java.util.stream.Collectors.toList;
 public class StreamMapperPractice {
 
     public static void main(String[] args) {
-        mapSortStream();
-        pro1();
+//        mapSortStream();
+//        pro1();
+//        pro2();
         mapDiffFlatMap();
     }
 
@@ -82,11 +84,17 @@ public class StreamMapperPractice {
 
     static void mapDiffFlatMap(){
 
-        List<String> helloWorld= Lists.newArrayList("Hello","world");
-        helloWorld.stream().map(item->item.split("")).
-        flatMap(Arrays::stream).collect(toList()).
-                forEach(System.out::println);
+//        List<String> helloWorld= Lists.newArrayList("Hello","world");
+//        helloWorld.stream().map(item->item.split("")).
+//        flatMap(item-> Arrays.stream(item)).collect(toList()).
+//                forEach(System.out::println);
 
+
+        List<String> helloWorld=Lists.newArrayList("Hello","world");
+        List<String> result=helloWorld.stream().map(item->item.split("")).peek(item->System.out.println("FIRST MAP:"+Arrays.toString(item))).
+                flatMap(item-> Arrays.stream(item)).
+                peek(item->System.out.println("flatMap: "+item)).distinct().collect(toList());
+        result.forEach(item->System.out.println(item));
 
     }
 

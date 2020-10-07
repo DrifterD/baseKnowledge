@@ -26,7 +26,7 @@ public class RegExMain {
      */
     public static void main(String[] args) {
 
-        regeGroup();
+        regeGroupByName();
 
     }
 
@@ -52,7 +52,7 @@ public class RegExMain {
 
     }
 
-    private static void regeGroup() {
+    private static void regeGroupByName() {
 
         //group 是表达式中() 的组，group(0)全部，下标从1开始
         String regex = "(\\d+)ab(11f)+";
@@ -60,7 +60,9 @@ public class RegExMain {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher("122ab11fadeba123af4f11f");
         matcher.find();
-        System.out.println(matcher.group("num"));
+        //通过group下坐标获取group
+        System.out.println(matcher.group(0));
+        //通过group(name)获取指定组名.参考：https://blog.csdn.net/goldenfish1919/article/details/7317962
         System.out.println(matcher.group("last"));
         //替换符合正则的内容
         System.out.println(matcher.replaceAll("110"));

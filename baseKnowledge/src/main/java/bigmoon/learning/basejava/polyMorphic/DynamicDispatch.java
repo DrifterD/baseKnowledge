@@ -11,7 +11,7 @@
 
 package bigmoon.learning.basejava.polyMorphic;
 
-//方法金泰分配演示
+//方法静态分配演示
 public class DynamicDispatch {
 
 	static class Human{
