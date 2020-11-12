@@ -20,9 +20,18 @@ import java.util.stream.Stream;
 /**
  *
  * 创建stream 多个方法实现
+ * 1.通过集合转换成流stream。通过Collection stream API实现集合自身流转换
+ * 2.通过数组方式实现Arrays.Stream API实现;Stream.of API实际上调用Arrays.Stream
+ * 3.
  *
  */
 public class CreateStream {
+
+    public static void main(String[] args) {
+        CreateStream cs=new CreateStream();
+        cs.collection2Stream();
+        cs.Array2Stream();
+    }
 
     //collection
     void collection2Stream(){
