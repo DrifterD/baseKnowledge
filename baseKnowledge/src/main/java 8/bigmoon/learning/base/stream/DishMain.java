@@ -42,8 +42,10 @@ public class DishMain {
 //        firstStream(menu);
 //        distincStream();
 //        firstSkp(menu);
-        secondFlatMap();
+//        secondFlatMap();
+        firstFlatMap();
 //        reduce(menu);
+        secondMap();
     }
 
     /**
@@ -76,13 +78,15 @@ public class DishMain {
     }
     static void secondMap(){
         List<String> words=Arrays.asList("hello","world");
-       words.stream().map((item)->item.split("")).distinct().forEach(ite-> System.out.println(Arrays.toString(ite)));
+        Object ob=words.stream().map((item)->item.split("")).collect(toList());
+//       words.stream().map((item)->item.split("")).distinct().forEach(ite-> System.out.println(Arrays.toString(ite)));
     }
 
     static void firstFlatMap(){
 
         List<String> words=Arrays.asList("hello","world");
-        words.stream().map(item->item.split("")).flatMap(item->Arrays.stream(item)).
+        words.stream().map(item->item.split("")).peek(item-> System.out.println("item class:"+item.getClass()+"----"+item)).
+                flatMap(item->Arrays.stream(item)).peek(item-> System.out.println("class:"+item.getClass()+",content:"+item)).
                 distinct().forEach(item->System.out.println(item));
     }
 

@@ -25,7 +25,7 @@ public class StreamReduceMain {
         sumItem2();
         sumItem();
         countByReduce();
-        intStreamRangeClosed();
+//        intStreamRangeClosed();
     }
 
     /**
@@ -59,9 +59,8 @@ public class StreamReduceMain {
         IntStream.range(1,10).forEach(System.out::println);
     }
 
-    static void intStreamRangeClosed(){
-        IntStream.rangeClosed(1,10).forEach(System.out::println);
-    }
+//    static void intStreamRangeClosed()
+
 
 
 }
